@@ -1,0 +1,31 @@
+<div class="row form_content">
+    <div class="col-sm-6 text-center">
+        <h3 style="margin: 1rem 0;">Login</h3>
+        <mat-card>
+            <form #signInForm='ngForm' (ngSubmit)='onSubmit(signInForm)'>
+                <div class="form_content">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="text" #email="ngModel" [(ngModel)]="userRecord.selectedUser.email"
+                            name="email" placeholder="Email" [pattern]="emailRegex" required>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="phone" #password="ngModel" [(ngModel)]="userRecord.selectedUser.password"
+                            name="password" placeholder="Password" required>
+                    </mat-form-field>
+                </div>
+                <div class="example-full-width input_1 ">
+                    <p>New User ?<a (click)="register()"><strong>Create New Account</strong></a></p>
+                </div>
+                <div class="submit_btn text-center">
+                    <button mat-raised-button type="submit" color="primary">Log In</button>
+                </div>
+            </form>
+            <!-- Error message -->
+            <div class="alert" *ngIf="serverErrorMessages">
+                <h5>{{serverErrorMessages}}</h5>
+            </div>
+        </mat-card>
+    </div>
+</div>

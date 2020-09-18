@@ -1,0 +1,33 @@
+<div class="data" *ngFor="let user of userData">
+    <!-- <h4>{{user._id}}</h4> -->
+    <!-- <h4>{{user.email}}</h4>
+    <h4>{{user.favsub}}</h4>
+    <h4>{{user.mobile}}</h4> -->
+</div>
+
+<div class="addMarks col-sm-6">
+    <h4>Add Subject and Marks</h4>
+    <mat-card>
+        <form #addMarksForm='ngForm' (ngSubmit)='onSubmit(addMarksForm)'>
+            <div class="form_inputs">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Subject</mat-label>
+                    <input matInput type="text" #subject="ngModel" [(ngModel)]="addMarksService.marksData.subject"
+                        name="subject" placeholder="Subject" required>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Marks</mat-label>
+                    <input matInput type="text" #marks="ngModel" [(ngModel)]="addMarksService.marksData.marks"
+                        name="marks" placeholder="Marks" required>
+                </mat-form-field>
+            </div>
+            <div class="submit_btn text-center">
+                <button mat-raised-button type="submit" color="primary">Add</button>
+            </div>
+        </form>    
+    </mat-card>
+    <!-- Error message -->
+    <div class="alert" *ngIf="serverErrorMessages">
+        {{serverErrorMessages}}
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<div class=" row form_content">
+    <div class="col-sm-6">
+        <h3 style="margin: 1rem 0;">Register For New Account</h3>
+        <mat-card>
+            <form #signUpForm='ngForm' (ngSubmit)='onSubmit(signUpForm)'>
+                <div class="form_inputs">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Name</mat-label>
+                        <input matInput type="text" #name="ngModel" [(ngModel)]="userRecord.selectedUser.name"
+                            name="name" placeholder="Name" required>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="text" #email="ngModel" [(ngModel)]="userRecord.selectedUser.email"
+                            name="email" placeholder="Email" [pattern]="emailRegex" required>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Mobile</mat-label>
+                        <input matInput type="phone" #mobile="ngModel" [(ngModel)]="userRecord.selectedUser.mobile"
+                            name="mobile" placeholder="Mobile" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Favourite Subjects</mat-label>
+                        <mat-select [(ngModel)]="userRecord.selectedUser.favsub" name="favsub" id="favsub" multiple>
+                            <mat-option *ngFor="let selected of favsub" [value]="selected?.subject">{{selected.subject}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" #password="ngModel" [(ngModel)]="userRecord.selectedUser.password"
+                            name="password" placeholder="Password" required>
+                    </mat-form-field>
+                </div>
+                <div class="submit_btn text-center">
+                    <button mat-raised-button type="submit" color="primary">Create New Account</button>
+                </div>
+            </form>
+        </mat-card>
+    </div>
+    <!-- Success message -->
+    <div class="success" *ngIf="showSucessMessage">
+        Saved successfully
+    </div>
+
+    <!-- Error message -->
+    <div class="alert" *ngIf="serverErrorMessages">
+        {{serverErrorMessages}}
+    </div>
+</div>

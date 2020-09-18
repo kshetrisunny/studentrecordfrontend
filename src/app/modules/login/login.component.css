@@ -1,0 +1,12 @@
+.form_content {
+    justify-content: center;
+}
+
+.example-full-width {
+    width: 80%;
+}
+
+.input_1 {
+    margin: .5rem 1rem;
+    cursor: pointer;
+}

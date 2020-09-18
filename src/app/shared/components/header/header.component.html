@@ -1,0 +1,22 @@
+<mat-toolbar color="primary" >
+    <mat-toolbar-row>
+        <button mat-icon-button (click)="toggleSideBar()" >
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span><h4>Student Records</h4></span>
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" >
+            <ul fxLayout="row" fxLayoutGap="10px">
+                <li>
+                    <button mat-icon-button>
+                        <mat-icon>account_circle</mat-icon>
+                    </button>
+                </li>
+                <li>
+                    <button mat-icon-button>
+                        <mat-icon>exit_to_app</mat-icon>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
