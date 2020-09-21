@@ -12,6 +12,7 @@ import { UserrecordService } from 'src/app/services/userrecord.service';
 })
 export class UsersComponent implements OnInit {
 
+  localUser: any;
   serverErrorMessages: string;
   userData: UserRecord[] = [];
   addMarks: AddMarks[] = [];
@@ -23,14 +24,14 @@ export class UsersComponent implements OnInit {
   }
 
   getData() {
-    this.userRecord.get().subscribe(res => {
-      this.userData = res['data'];
-      console.log(this.userData);
+    this.userRecord.getSubjectMarks().subscribe(res => {
+      this.localUser = res;
+      console.log(this.localUser);
     })
   }
 
   onSubmit(form: NgForm) {
-    this.addMarksService.post(form.value).subscribe(res => {
+    this.userRecord.postSubjectMarks(form.value).subscribe(res => {
       console.log(res);
       this.resetForm(form);
     },
@@ -41,7 +42,7 @@ export class UsersComponent implements OnInit {
   }
 
   resetForm(form: NgForm) {
-    this.addMarksService.marksData = {
+    this.userRecord.marksData = {
       subject: '',
       marks: '',
       userId: ''

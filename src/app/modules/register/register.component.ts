@@ -26,9 +26,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.userRecord.post(form.value).subscribe(res => {
+    this.userRecord.postUserData(form.value).subscribe(res => {
       this.showSucessMessage = true;
-      this.route.navigateByUrl('/dash/dash');
+      this.route.navigateByUrl('/login');
       console.log("form submited...", res);
       setTimeout(() => {
         this.showSucessMessage = false

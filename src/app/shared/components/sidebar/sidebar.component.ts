@@ -16,7 +16,7 @@ export class SidebarComponent implements OnInit {
   }
 
   getData() {
-    this.userRecord.get().subscribe(res => {
+    this.userRecord.getUserData().subscribe(res => {
       this.data = res['data'];
       // console.log(this.data);
     })

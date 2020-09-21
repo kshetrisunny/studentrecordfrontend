@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getData() {
-    this.userRecord.get().subscribe(res => {
+    this.userRecord.getUserData().subscribe(res => {
       this.userData = res['data'];
       this.dataSource = this.userData;
       console.log(this.dataSource);
@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getMarks() {
-    this.addMarksService.get().subscribe(res => {
+    this.userRecord.getSubjectMarks().subscribe(res => {
       this.marksData = res['data'];
       console.log(this.marksData);
     })
