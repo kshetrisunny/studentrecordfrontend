@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AddMarks } from 'src/app/models/addmarks.model';
-import { UserRecord } from 'src/app/models/userRecord.model';
-import { AddmarksService } from 'src/app/services/addmarks.service';
 import { UserrecordService } from 'src/app/services/userrecord.service';
 
 
@@ -12,31 +9,22 @@ import { UserrecordService } from 'src/app/services/userrecord.service';
 })
 export class DashboardComponent implements OnInit {
 
-  allData: any[];
-  userData: UserRecord[] = [];
-  marksData: AddMarks[] = [];
-  displayedColumns: string[] = ['name', 'email', 'mobile', 'favsub'];
+  userData: any[] = [];
+  subData: object [];
+ 
+  displayedColumns: string[] = ['name', 'email', 'mobile', 'favsub', 'subject', 'marks'];
   dataSource = this.userData;
-  constructor(public userRecord: UserrecordService, public addMarksService: AddmarksService) { }
+  constructor(public userRecord: UserrecordService) { }
 
  
   ngOnInit(): void {
     this.getData();
-    this.getMarks();
   }
 
   getData() {
-    this.userRecord.getUserData().subscribe(res => {
+    this.userRecord.getSubjectMarks().subscribe(res => {
       this.userData = res['data'];
       this.dataSource = this.userData;
-      console.log(this.dataSource);
-    })
-  }
-
-  getMarks() {
-    this.userRecord.getSubjectMarks().subscribe(res => {
-      this.marksData = res['data'];
-      console.log(this.marksData);
     })
   }
 

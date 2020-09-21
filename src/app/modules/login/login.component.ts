@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   }
   onSubmit(form: NgForm) {
     this.userRecord.login(form.value).subscribe(res => {
-      console.log(res.data);
       this.route.navigateByUrl('/dash/dash');
     },
       err => {

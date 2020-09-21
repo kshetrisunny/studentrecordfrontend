@@ -16,19 +16,27 @@
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
             <ng-container matColumnDef="name">
               <th mat-header-cell *matHeaderCellDef>Name</th>
-              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+              <td mat-cell *matCellDef="let element"> {{element?.userId?.name}} </td>
             </ng-container>
             <ng-container matColumnDef="email">
               <th mat-header-cell *matHeaderCellDef> Email </th>
-              <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+              <td mat-cell *matCellDef="let element"> {{element?.userId?.email}} </td>
             </ng-container>
             <ng-container matColumnDef="mobile">
               <th mat-header-cell *matHeaderCellDef> Mobile </th>
-              <td mat-cell *matCellDef="let element"> {{element.mobile}} </td>
+              <td mat-cell *matCellDef="let element"> {{element?.userId?.mobile}} </td>
             </ng-container>
             <ng-container matColumnDef="favsub">
               <th mat-header-cell *matHeaderCellDef> Favourite Subjects </th>
-              <td mat-cell *matCellDef="let element"> {{element.favsub}} </td>
+              <td mat-cell *matCellDef="let element"> {{element?.userId?.favsub}} </td>
+            </ng-container>
+            <ng-container matColumnDef="subject">
+              <th mat-header-cell *matHeaderCellDef> Subjects </th>
+              <td mat-cell *matCellDef="let element"> {{element.subject}} </td>
+            </ng-container>
+            <ng-container matColumnDef="marks">
+              <th mat-header-cell *matHeaderCellDef> Marks </th>
+              <td mat-cell *matCellDef="let element"> {{element.marks}} </td>
             </ng-container>
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

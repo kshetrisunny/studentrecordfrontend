@@ -29,7 +29,6 @@ export class RegisterComponent implements OnInit {
     this.userRecord.postUserData(form.value).subscribe(res => {
       this.showSucessMessage = true;
       this.route.navigateByUrl('/login');
-      console.log("form submited...", res);
       setTimeout(() => {
         this.showSucessMessage = false
       }, 2000);
